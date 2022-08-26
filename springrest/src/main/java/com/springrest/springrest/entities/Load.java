@@ -9,10 +9,10 @@ public class Load {
 	private int noOfTrucks;
 	private int weight;
 	private String comment;
-    private String shipperId;
+    private long shipperId;
 	private String date;
 	public Load(String loadingPoint, String unloadingPoint, String productType, String truckType, int noOfTrucks,
-			int weight, String comment, String shipperId, String date) {
+			int weight, String comment, long data, String date) {
 		super();
 		this.loadingPoint = loadingPoint;
 		this.unloadingPoint = unloadingPoint;
@@ -21,7 +21,7 @@ public class Load {
 		this.noOfTrucks = noOfTrucks;
 		this.weight = weight;
 		this.comment = comment;
-		this.shipperId = shipperId;
+		this.shipperId = data;
 		this.date = date;
 	}
 	public Load() {
@@ -70,10 +70,10 @@ public class Load {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-	public String getShipperId() {
+	public long getShipperId() {
 		return shipperId;
 	}
-	public void setShipperId(String shipperId) {
+	public void setShipperId(long shipperId) {
 		this.shipperId = shipperId;
 	}
 	public String getDate() {

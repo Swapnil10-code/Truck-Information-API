@@ -3,6 +3,8 @@ package com.springrest.springrest.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,7 +29,7 @@ public class MyController {
 	}
 	@GetMapping("/load/{loadId}")
 	public Load getLoads(@PathVariable String loadId) {
-		return this.loadService.getLoads(loadId);
+		return this.loadService.getLoads(Long.parseLong(loadId));
 	}
 	
 	@PostMapping("/load")
@@ -35,15 +37,22 @@ public class MyController {
 		return this.loadService.addLoad(load);
 		
 	}
+
+	@PutMapping("/load/{loadId}")
+	public Load updateLoad(@RequestBody Load load) {
+		return this.loadService.updateLoad(load);
+	}
 	
 	@DeleteMapping("/load/{loadId}")
-	public void deleteLoad(@PathVariable String loadId) {
-		return;
+	public ResponseEntity<HttpStatus> deleteLoad(@PathVariable String loadId) {
+		try {
+			this.loadService.deleteLoad(Long.parseLong(loadId));
+			return new ResponseEntity<>(HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 }
 	
-	@PutMapping("/load/{loadId}")
-	public Load addId(@PathVariable String loadId) {
-		return this.loadService.adddet(loadId);
-}
+
 	
 }

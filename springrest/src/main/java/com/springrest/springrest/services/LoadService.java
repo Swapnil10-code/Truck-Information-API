@@ -7,11 +7,11 @@ import com.springrest.springrest.entities.Load;
 public interface LoadService {
      public List<Load> getLoad();
      
-     public Load getLoads(String loadId);
+     public Load getLoads(long loadId);
     
      public Load addLoad(Load load);
 
-	public void deleteLoad(String loadId);
+	public void deleteLoad(long loadId);
 
-	public Load adddet(String loadId);
+	public Load updateLoad(Load load);
 }
